@@ -1,0 +1,130 @@
+.header-container {
+    background-color: #da142a;
+    width: 100%;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-btn {
+    background-color: #e45464;
+
+    font-weight: 400;
+}
+.same-height {
+    height: 50px;
+}
+
+.sidebar-container {
+    background-color: white;
+    border-radius: 12px;
+    padding: 10px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.row.no-stretch {
+    align-items: flex-start;
+}
+
+.sidebar-container li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+.sidebar-container li:hover {
+    background-color: #f5f5f5;
+}
+
+.sidebar-container li div {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.fa-icon {
+    font-size: 20px;
+}
+
+.ad3-container {
+    border: 3px solid black;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border-bottom: 2px solid #ddd;
+}
+
+.carousel-item img {
+    max-height: 350px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.long-ads img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.recommend-section {
+    background: linear-gradient(
+        90deg,
+        rgba(253, 216, 214, 1) 0%,
+        rgba(212, 227, 255, 1) 100%
+    );
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.recommend-section h4 {
+    color: #04297a;
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.4em;
+    min-height: calc(1.4em * 2);
+}
+
+.logo-img {
+    max-height: 50px;
+    width: 80%;
+}
+
+.navbar .container-fluid {
+    gap: 10px; /* khoảng cách giữa logo và menu */
+}
+
+/* hỗ trợ kéo ngang */
+@media (max-width: 768px) {
+    .overflow-auto {
+        -webkit-overflow-scrolling: touch;
+    }
+    .overflow-auto::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+a.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+a.card:hover {
+    transform: translateY(-5px); /* Nổi lên 5px */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Đổ bóng đậm hơn */
+}
