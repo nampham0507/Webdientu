@@ -1,61 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🛒 Web Điện Tử - Laravel Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Dự án website thương mại điện tử được xây dựng bằng **Laravel**, cung cấp các chức năng cơ bản:
+- Quản lý sản phẩm
+- Giỏ hàng (Cart)
+- Đặt hàng (Order)
+- Đăng nhập/Đăng ký người dùng
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Yêu cầu hệ thống
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP >= 8.1
+- Composer
+- MySQL/MariaDB
+- Node.js & NPM
+- Git
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ⚙️ Cài đặt
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone dự án từ GitHub
+```bash
+git clone https://github.com/nampham0507/Webdientu.git
+cd Webdientu
+2. Cài đặt Composer packages
+bash
+Copy code
+composer install
+3. Cài đặt Node.js packages (frontend)
+bash
+Copy code
+npm install && npm run dev
+4. Tạo file môi trường .env
+bash
+Copy code
+cp .env.example .env
+Cập nhật cấu hình DB trong file .env:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+env
+Copy code
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=webdientu
+DB_USERNAME=root
+DB_PASSWORD=
+5. Tạo key cho Laravel
+bash
+Copy code
+php artisan key:generate
+6. Tạo database & chạy migration
+bash
+Copy code
+php artisan migrate
+(Nếu cần dữ liệu mẫu thì chạy thêm)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+bash
+Copy code
+php artisan db:seed
+▶️ Chạy dự án
+Chạy server cục bộ:
 
-## Laravel Sponsors
+bash
+Copy code
+php artisan serve
+Mặc định sẽ chạy tại:
+👉 http://127.0.0.1:8000
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+👤 Tài khoản mẫu (demo)
+Email: admin@example.com
 
-### Premium Partners
+Password: admin@example.com1
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+📌 Ghi chú
+Không commit file .env lên GitHub (chứa thông tin nhạy cảm).
 
-## Contributing
+Không commit thư mục /vendor và /node_modules (sẽ được cài lại bằng Composer/NPM).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📜 License
+Dự án được phát triển phục vụ mục đích học tập và nghiên cứu.
+Bạn có thể tự do sử dụng và chỉnh sửa.
