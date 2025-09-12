@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 use App\Models\CartItems;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
@@ -70,16 +71,27 @@ class CartController extends Controller
 
     public function addFromProfile(Request $request)
     {
-        $cart = session()->get('cart', []);
+        if (!Auth::check()) {
+            return redirect()->route('dangnhap')->with('error', 'Bạn cần đăng nhập');
+        }
 
-        $cart[] = [
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->quantity,
+        $userId = Auth::id();
 
-        ];
+        // Lấy hoặc tạo giỏ hàng cho user
+        $cart = Cart::firstOrCreate(['UserID' => $userId]);
 
-        session()->put('cart', $cart);
+        // Giả sử bạn muốn lấy ProductID từ tên sản phẩm (hoặc tạo sản phẩm mới tạm thời)
+        $product = Product::firstOrCreate(
+            ['ProductName' => $request->name],
+            ['Price' => $request->price, 'ImageURL' => 'images/default-product.webp']
+        );
+
+        // Thêm vào cart_items
+        CartItems::create([
+            'CartID'   => $cart->CartID,
+            'ProductID' => $product->ProductID,
+            'Quantity' => $request->quantity,
+        ]);
 
         return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }

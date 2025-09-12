@@ -1,4 +1,3 @@
-@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!DOCTYPE html>
 <html lang="vi">
