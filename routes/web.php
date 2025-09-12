@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 // Trang chủ
 Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
@@ -43,3 +44,10 @@ Route::prefix('admin')->group(function () {
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/cart/add-from-profile', [CartController::class, 'addFromProfile'])->name('cart.addFromProfile');
+
+// Checkout 
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+Route::post('/checkout/prepare', [CheckoutController::class, 'prepare'])->name('checkout.prepare');
+Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');

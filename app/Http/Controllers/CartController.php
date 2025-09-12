@@ -67,4 +67,20 @@ class CartController extends Controller
         CartItems::where('CartItemID', $id)->delete();
         return redirect()->back()->with('success', 'Đã xóa sản phẩm khỏi giỏ hàng!');
     }
+
+    public function addFromProfile(Request $request)
+    {
+        $cart = session()->get('cart', []);
+
+        $cart[] = [
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+
+        ];
+
+        session()->put('cart', $cart);
+
+        return redirect()->route('cart.index')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
+    }
 }

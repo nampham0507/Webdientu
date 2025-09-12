@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.profile')
 
 @section('title', 'Trang cá nhân - Sdevices')
 
@@ -86,6 +86,8 @@
         <a class="nav-link" href="#"><i class="bi bi-tools"></i> Tra cứu bảo hành</a>  
         <a class="nav-link" href="#"><i class="bi bi-people"></i> Giới thiệu bạn bè</a>        
         <a class="nav-link" href="#"><i class="bi bi-geo-alt"></i> Tìm kiếm cửa hàng</a>
+        <a class="nav-link" href="#"><i class="bi bi-geo-alt"></i> Thêm sản phẩm vào giỏ hàng</a>
+        
       </nav>
     </div>
 

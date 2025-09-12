@@ -1,3 +1,5 @@
+@
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!DOCTYPE html>
 <html lang="vi">
   <head>
@@ -18,12 +20,7 @@
         @else
             @foreach($cartItems as $item)
                 <div class="d-flex align-items-center border-bottom pb-2 mb-3">
-                    <img
-                        src="{{ asset($item['image'] ?? 'images/default-product.webp') }}"
-                        alt="{{ $item['name'] }}"
-                        class="img-thumbnail me-3"
-                        style="width: 80px; height: auto"
-                    />
+                    
                     <div class="flex-grow-1">
                         <h6 class="mb-1">{{ $item['name'] }}</h6>
                         <div>
@@ -35,7 +32,8 @@
             @endforeach
         @endif
 
-        <form action="{{ route('cart.checkout') }}" method="POST">
+        
+            <form action="{{ route('checkout.process') }}" method="POST">
             @csrf
 
             <h6 class="fw-bold">Thông tin khách hàng</h6>
