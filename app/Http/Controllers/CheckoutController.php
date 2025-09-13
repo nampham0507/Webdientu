@@ -179,7 +179,7 @@ class CheckoutController extends Controller
         return view('checkout.checkoutsuccess', compact('orderInfo'));
     }
 
-    // Thêm vào CheckoutController
+
     public function prepare(Request $request)
     {
         $selectedItems = json_decode($request->selected_items, true);
