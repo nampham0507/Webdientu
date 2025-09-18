@@ -23,8 +23,11 @@ class User extends Authenticatable
     public $timestamps = true;
     protected $fillable = [
         'name',
+        'dob',
+        'phone',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -48,5 +51,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Hàm kiểm tra quyền admin
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 }

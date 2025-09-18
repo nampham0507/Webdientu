@@ -76,12 +76,17 @@
     <!-- Sidebar -->
     <div class="col-md-3 col-lg-2 sidebar">
       <h2>SDevices Admin</h2>
+      <div class="text-center mb-3">
+        <small class="text-muted">Xin chào, {{ Auth::user()->name }}</small>
+      </div>
       <nav class="nav flex-column">
         <a href="#" class="active"><i class="bi bi-speedometer2"></i>Tổng quan</a>
-        
-        
         <a href="#"><i class="bi bi-people"></i> Khách hàng</a>
         <a href="#"><i class="bi bi-gear-fill"></i> Cài đặt</a>
+        <hr>
+        <a href="{{ route('admin.logout') }}" class="text-danger">
+          <i class="bi bi-box-arrow-right"></i> Đăng xuất
+        </a>
       </nav>
     </div>
 

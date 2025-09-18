@@ -18,6 +18,6 @@ class CartItems extends Model
 
     public function product()
     {
-        return $this->belongsTo(Product::class, 'ProductID', 'ProductID');
+        return $this->belongsTo(Product::class, 'ProductID', 'ProductID'); //Eloquent Relationship
     }
 }
