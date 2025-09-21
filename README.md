@@ -1,83 +1,195 @@
-# 🛒 Web Điện Tử - Laravel Project
+# 🛒 E-commerce Laravel Application
 
-Dự án website thương mại điện tử được xây dựng bằng **Laravel**, cung cấp các chức năng cơ bản:
-- Quản lý sản phẩm
-- Giỏ hàng (Cart)
-- Đặt hàng (Order)
-- Đăng nhập/Đăng ký người dùng
+## 📋 Yêu Cầu Hệ Thống
 
----
+Trước khi bắt đầu, hãy đảm bảo bạn đã cài đặt:
 
-## 🚀 Yêu cầu hệ thống
+-   **PHP** >= 8.0
+-   **Composer** (Dependency Manager cho PHP)
+-   **Node.js** & **NPM** (cho frontend assets)
+-   **MySQL/MariaDB** (Database)
+-   **Git** (Version Control)
 
-- PHP >= 8.1
-- Composer
-- MySQL/MariaDB
-- Node.js & NPM
-- Git
+## 🚀 Hướng Dẫn Cài Đặt
 
----
+### Bước 1: Clone Repository
 
-## ⚙️ Cài đặt
-
-### 1. Clone dự án từ GitHub
 ```bash
-git clone https://github.com/nampham0507/Webdientu.git
-cd Webdientu
-2. Cài đặt Composer packages
-bash
-Copy code
-composer install
-3. Cài đặt Node.js packages (frontend)
-bash
-Copy code
-npm install && npm run dev
-4. Tạo file môi trường .env
-bash
-Copy code
-cp .env.example .env
-Cập nhật cấu hình DB trong file .env:
+git clone <repository-url>
+cd <project-name>
+```
 
-env
-Copy code
+### Bước 2: Cài Đặt Dependencies
+
+#### Backend Dependencies
+
+```bash
+composer install
+```
+
+> 💡 **Lưu ý:** Nếu không có file `composer.lock`, hãy chạy:
+
+```bash
+composer update
+```
+
+#### Frontend Dependencies
+
+```bash
+npm install
+```
+
+### Bước 3: Cấu Hình Environment
+
+#### Tạo file `.env`
+
+```bash
+cp .env.example .env
+```
+
+#### Cấu hình Database
+
+Mở file `.env` và cập nhật thông tin database:
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=webdientu
-DB_USERNAME=root
-DB_PASSWORD=
-5. Tạo key cho Laravel
-bash
-Copy code
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+#### Tạo Application Key
+
+```bash
 php artisan key:generate
-6. Tạo database & chạy migration
-bash
-Copy code
+```
+
+### Bước 4: Thiết Lập Database
+
+#### Tạo Database
+
+Tạo một database mới trong MySQL (database phải trống):
+
+```sql
+CREATE DATABASE your_database_name;
+```
+
+#### Chạy Migration
+
+```bash
 php artisan migrate
-(Nếu cần dữ liệu mẫu thì chạy thêm)
+```
 
-bash
-Copy code
+#### Chạy Seeder (Tạo dữ liệu mẫu)
+
+```bash
 php artisan db:seed
-▶️ Chạy dự án
-Chạy server cục bộ:
+```
 
-bash
-Copy code
+> 📊 **Dữ liệu mẫu bao gồm:**
+>
+> -   1 tài khoản: Admin
+
+## 🎯 Khởi Động Ứng Dụng
+
+### Terminal 1: Laravel Server
+
+```bash
 php artisan serve
-Mặc định sẽ chạy tại:
-👉 http://127.0.0.1:8000
+```
 
-👤 Tài khoản mẫu (demo)
-Email: admin@example.com
+### Terminal 2: Frontend Assets (Vite)
 
-Password: admin@example.com1
+```bash
+npm run dev
+```
 
-📌 Ghi chú
-Không commit file .env lên GitHub (chứa thông tin nhạy cảm).
+> 🌐 **Truy cập ứng dụng:** http://localhost:8000
 
-Không commit thư mục /vendor và /node_modules (sẽ được cài lại bằng Composer/NPM).
+## 👥 Tài Khoản Mặc Định
 
-📜 License
-Dự án được phát triển phục vụ mục đích học tập và nghiên cứu.
-Bạn có thể tự do sử dụng và chỉnh sửa.
+| Role  | Email              | Password |
+| ----- | ------------------ | -------- |
+| Admin | admin@sdevices.com | password |
+
+## 📁 Cấu Trúc Project
+
+```
+├── app/
+│   ├── Models/          # Eloquent Models
+│   ├── Http/Controllers/# Controllers
+│   └── ...
+├── database/
+│   ├── migrations/      # Database Migrations
+│   ├── seeders/         # Database Seeders
+│   └── factories/       # Model Factories
+├── resources/
+│   ├── views/           # Blade Templates
+│   ├── js/              # JavaScript Files
+│   └── css/             # CSS Files
+└── ...
+```
+
+## 🔧 Các Lệnh Hữu Ích
+
+### Development
+
+```bash
+# Chạy migrations
+php artisan migrate
+
+# Rollback migrations
+php artisan migrate:rollback
+
+# Reset database và chạy lại migrations + seeders
+php artisan migrate:fresh --seed
+
+# Tạo cache cho hiệu suất tốt hơn
+php artisan config:cache
+php artisan route:cache
+```
+
+### Frontend
+
+```bash
+# Development mode (watch files)
+npm run dev
+
+# Production build
+npm run build
+
+# Watch for changes
+npm run watch
+```
+
+## 🐛 Troubleshooting
+
+### Lỗi thường gặp:
+
+**1. Permission denied**
+
+```bash
+sudo chmod -R 755 storage/
+sudo chmod -R 755 bootstrap/cache/
+```
+
+**2. Storage link không hoạt động**
+
+```bash
+php artisan storage:link
+```
+
+**3. Clear cache**
+
+```bash
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+## 🎉 Chúc Bạn Lập Trình Vui Vẻ!
+
+> **Made with ❤️ using Laravel Framework**
