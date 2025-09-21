@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\Authenticate;
 
 // Trang chủ
 Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage');
