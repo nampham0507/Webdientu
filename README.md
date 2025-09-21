@@ -1,4 +1,4 @@
-# 🛒 E-commerce Laravel Application
+# 🛒 SDEVICES Application
 
 ## 📋 Yêu Cầu Hệ Thống
 
@@ -15,7 +15,7 @@ Trước khi bắt đầu, hãy đảm bảo bạn đã cài đặt:
 ### Bước 1: Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/nampham0507/Webdientu.git
 cd <project-name>
 ```
 
