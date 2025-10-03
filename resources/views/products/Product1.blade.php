@@ -184,43 +184,43 @@
             <div class="carousel-inner text-center ads-container">
               <div class="carousel-item active">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh1.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh1.webp')}}"
                   alt="iPhone 16 Pro Max"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh2.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh2.webp')}}"
                   alt="Cáp sạc USB-C"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh3.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh3.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh4.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh4.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh5.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh5.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh6.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh6.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product1/Product1-Anh7.webp"
+                  src="{{asset('images/Products/Product1/Product1-Anh7.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
@@ -249,7 +249,7 @@
             class="d-flex justify-content-left mt-3 gap-2 flex-nowrap overflow-x-auto overflow-y-hidden"
           >
             <img
-              src="/Images/Products/Product1/Product1-Anh1.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh1.webp')}}"
               width="80"
               height="80"
               class="thumb active"
@@ -257,7 +257,7 @@
               data-bs-slide-to="0"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh2.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh2.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -265,7 +265,7 @@
               data-bs-slide-to="1"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh3.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh3.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -273,7 +273,7 @@
               data-bs-slide-to="2"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh4.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh4.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -281,7 +281,7 @@
               data-bs-slide-to="3"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh5.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh5.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -289,7 +289,7 @@
               data-bs-slide-to="4"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh6.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh6.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -297,7 +297,7 @@
               data-bs-slide-to="5"
             />
             <img
-              src="/Images/Products/Product1/Product1-Anh7.webp"
+              src="{{asset('images/Products/Product1/Product1-Anh7.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -455,7 +455,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product1/iphone-16-pro-max-titan-tu-nhien.webp"
+                    src="{{asset('images/Products/Product1/iphone-16-pro-max-titan-tu-nhien.webp')}}"
                   />
                   <div>
                     <strong>Titan tự nhiên</strong>
@@ -476,7 +476,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product1/iphone-16-pro-max-titan-sa-mac.webp"
+                    src="{{asset('images/Products/Product1/iphone-16-pro-max-titan-sa-mac.webp')}}"
                   />
                   <div>
                     <strong>Titan sa mạc</strong>
@@ -497,7 +497,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product1/iphone-16-pro-max-titan-den.webp"
+                    src="{{asset('images/Products/Product1/iphone-16-pro-max-titan-den.webp')}}"
                   />
                   <div>
                     <strong>Titan đen</strong>
@@ -518,7 +518,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product1/iphone-16-pro-max-titan-trang.webp"
+                    src="{{asset('images/Products/Product1/iphone-16-pro-max-titan-trang.webp')}}"
                   />
                   <div>
                     <strong>Titan trắng</strong>

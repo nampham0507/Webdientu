@@ -186,43 +186,43 @@
             <div class="carousel-inner text-center ads-container">
               <div class="carousel-item active">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh3.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh3.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh2.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh2.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh1.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh1.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh4.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh4.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh5.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh5.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh6.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh6.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product2/Product2-Anh7.webp"
+                  src="{{asset('images/Products/Product2/Product2-Anh7.webp')}}"
                   alt="Máy lọc không khí Levoit"
                 />
               </div>
@@ -251,7 +251,7 @@
             class="d-flex justify-content-left mt-3 gap-2 flex-nowrap overflow-x-auto overflow-y-hidden"
           >
             <img
-              src="/Images/Products/Product2/Product2-Anh3.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh3.webp')}}"
               width="80"
               height="80"
               class="thumb active"
@@ -259,7 +259,7 @@
               data-bs-slide-to="0"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh2.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh2.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -267,7 +267,7 @@
               data-bs-slide-to="1"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh1.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh1.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -275,7 +275,7 @@
               data-bs-slide-to="2"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh4.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh4.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -283,7 +283,7 @@
               data-bs-slide-to="3"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh5.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh5.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -291,7 +291,7 @@
               data-bs-slide-to="4"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh6.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh6.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -299,7 +299,7 @@
               data-bs-slide-to="5"
             />
             <img
-              src="/Images/Products/Product2/Product2-Anh7.webp"
+              src="{{asset('images/Products/Product2/Product2-Anh7.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -421,7 +421,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product2/Product2-Anh8.webp"
+                    src="{{asset('images/Products/Product2/Product2-Anh8.webp')}}"
                   />
                   <div>
                     <strong>Trắng</strong>

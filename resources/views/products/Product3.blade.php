@@ -184,49 +184,49 @@
             <div class="carousel-inner text-center ads-container">
               <div class="carousel-item active">
                 <img
-                  src="/Images/Products/Product3/text_ng_n_1__6_135.webp"
+                  src="{{asset('images/Products/Product3/text_ng_n_1__6_135.webp')}}"
                   alt="Macbook Pro 14 M4"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_2_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_2_vn_vi.webp')}}"
                   alt="Cáp sạc USB-C"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_3_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_3_vn_vi.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_4_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_4_vn_vi.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_5_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_5_vn_vi.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_6_vn_vi.jpg"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_6_vn_vi.jpg')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_7_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_7_vn_vi.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
               <div class="carousel-item">
                 <img
-                  src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_8_vn_vi.webp"
+                  src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_8_vn_vi.webp')}}"
                   alt="Ốp lưng"
                 />
               </div>
@@ -255,7 +255,7 @@
             class="d-flex justify-content-left mt-3 gap-2 flex-nowrap overflow-x-auto overflow-y-hidden"
           >
             <img
-              src="/Images/Products/Product3/text_ng_n_1__6_135.webp"
+              src="{{asset('images/Products/Product3/text_ng_n_1__6_135.webp')}}"
               width="80"
               height="80"
               class="thumb active"
@@ -263,7 +263,7 @@
               data-bs-slide-to="0"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_2_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_2_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -271,7 +271,7 @@
               data-bs-slide-to="1"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_3_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_3_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -279,7 +279,7 @@
               data-bs-slide-to="2"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_4_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_4_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -287,7 +287,7 @@
               data-bs-slide-to="3"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_5_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_5_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -295,7 +295,7 @@
               data-bs-slide-to="4"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_6_vn_vi.jpg"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_6_vn_vi.jpg')}}"
               width="80"
               height="80"
               class="thumb"
@@ -303,7 +303,7 @@
               data-bs-slide-to="5"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_7_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_7_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -311,7 +311,7 @@
               data-bs-slide-to="6"
             />
             <img
-              src="/Images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_8_vn_vi.webp"
+              src="{{asset('images/Products/Product3/macbook_pro_14_inch_m4_chip_silver_pdp_image_position_8_vn_vi.webp')}}"
               width="80"
               height="80"
               class="thumb"
@@ -484,7 +484,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product3/text_ng_n_1__6_135.webp"
+                    src="{{asset('images/Products/Product3/text_ng_n_1__6_135.webp')}}"
                   />
                   <div>
                     <strong>Đen</strong>
@@ -505,7 +505,7 @@
                   <img
                     width="50"
                     height="50"
-                    src="/Images/Products/Product3/text_ng_n_1__6_135.webp"
+                    src="{{asset('images/Products/Product3/text_ng_n_1__6_135.webp')}}"
                   />
                   <div>
                     <strong>Bạc</strong>
