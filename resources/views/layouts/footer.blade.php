@@ -44,5 +44,5 @@
   </div>
 
   <!-- Dòng bản quyền -->
-  <div class="footer-bottom">©Bản quyền CellphoneS 2025.</div>
+  <div class="footer-bottom">&copy;Bản quyền 2025.</div>
 </footer>

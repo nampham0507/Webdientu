@@ -42,7 +42,7 @@
           <strong class="text-danger">{{ number_format($orderInfo['total_amount'], 0, ',', '.') }}đ</strong>
         </li>
         <li class="list-group-item d-flex justify-content-between">
-          <span>Phương thức thanh toán:</span>
+          <span>Phương thức thanh toán: </span>
           <strong>
             @switch($orderInfo['payment_method'])
               @case('cod') Thanh toán khi nhận hàng @break

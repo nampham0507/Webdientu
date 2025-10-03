@@ -10,7 +10,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- CSS riêng -->
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
   </head>
   <body class="bg-light">

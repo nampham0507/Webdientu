@@ -56,7 +56,7 @@ class CartController extends Controller
         $cartItem->Quantity = $request->quantity;
         $cartItem->save();
 
-        return response()->json(['success' => true]);
+        return response()->json(['success' => true]); //cập nhật UI
     }
 
     public function remove($id)
@@ -80,7 +80,7 @@ class CartController extends Controller
         // Lấy hoặc tạo giỏ hàng cho user
         $cart = Cart::firstOrCreate(['UserID' => $userId]);
 
-        // Giả sử bạn muốn lấy ProductID từ tên sản phẩm (hoặc tạo sản phẩm mới tạm thời)
+        // Giả sử muốn lấy ProductID từ tên sản phẩm (hoặc tạo sản phẩm mới tạm thời)
         $product = Product::firstOrCreate(
             ['ProductName' => $request->name],
             ['Price' => $request->price, 'ImageURL' => 'images/default-product.webp']

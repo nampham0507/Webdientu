@@ -14,7 +14,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Các thuộc tính có thể gán hàng loạt (mass assignable).
      *
      * @var list<string>
      */
@@ -31,7 +31,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Các thuộc tính cần được ẩn khi chuyển đối tượng thành JSON/array (serialization)
      *
      * @var list<string>
      */
@@ -41,7 +41,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Lấy danh sách các thuộc tính cần được ép kiểu (cast).
      *
      * @return array<string, string>
      */

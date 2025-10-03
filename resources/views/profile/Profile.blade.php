@@ -12,101 +12,159 @@
   @endpush
 </head>
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <!-- Sidebar -->
-    <div class="col-md-3 col-lg-2 sidebar p-4">
-      <h1 class="mb-4 text-danger fw-bold">Profile</h1>
-      <nav class="nav flex-column">
-        <a class="nav-link active" href="#"><i class="bi bi-speedometer2"></i>Thông tin tài khoản</a>
-        <a class="nav-link" href="#"><i class="bi bi-tools"></i> Tra cứu bảo hành</a>
-        <a class="nav-link" href="#"><i class="bi bi-people"></i> Giới thiệu bạn bè</a>
-        <a class="nav-link" href="#"><i class="bi bi-geo-alt"></i> Tìm kiếm cửa hàng</a>
-
-        <!-- Mục mới: Thêm sản phẩm -->
-        <a class="nav-link" href="#add-to-cart-form" data-bs-toggle="collapse" aria-expanded="false">
-          <i class="bi bi-bag-plus"></i> Thêm sản phẩm vào giỏ hàng
-        </a>
-      </nav>
-    </div>
-
-    <!-- Main content -->
-    <div class="col-md-9 col-lg-10 p-4">
-      <!-- Header user info -->
-      <div class="card-custom d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-        <div class="d-flex align-items-center gap-3">
-          <img src="{{ asset('images/RecommendProduct/anhprofile.png') }}" alt="Avatar" class="rounded-circle" width="70" height="70"/>
-          <div>
-            <h5 class="fw-bold mb-1">Phạm Đình Nam</h5>
-            <span class="badge bg-danger me-1">S-MEM</span>
-            <span class="badge bg-success">S-Student</span>
-          </div>
-        </div>
-        <div class="text-center text-md-end">
-          <h6 class="mb-1">Tổng số đơn đã mua: <strong>{{ $totalOrders }}</strong></h6>
-          <h6 class="mb-0">Tổng tiền tích lũy:
-            <strong class="text-danger">{{ number_format($totalPrice, 0, ',', '.') }}đ</strong>
-          </h6>
-        </div>
-      </div>
-
-      <!-- Quick access -->
-      <div class="card-custom quick-access">
-        <div class="item"><i class="bi bi-star-fill"></i><p class="mb-0 fw-semibold">Hạng thành viên</p></div>
-        <div class="item"><i class="bi bi-ticket-perforated"></i><p class="mb-0 fw-semibold">Mã giảm giá</p></div>
-        <div class="item"><i class="bi bi-bag-check-fill"></i><p class="mb-0 fw-semibold">Lịch sử mua hàng</p></div>
-        <div class="item"><i class="bi bi-geo-alt-fill"></i><p class="mb-0 fw-semibold">Sổ địa chỉ</p></div>
-      </div>
-
-      <!-- Đơn hàng gần đây -->
-      <div class="row">
-        <div class="col-md-8">
-          <div class="card-custom">
-            <h6 class="fw-bold mb-3"><i class="bi bi-box-seam"></i> Đơn hàng gần đây</h6>
-            @foreach($orders as $order)
-              <div class="order-item">
-                <strong>Đơn hàng #{{ $order->order_code }}</strong> - {{ $order->order_date }}
-                <p class="mb-1">{{ $order->product_name }}</p>
-                @if($order->status == 'Đã nhận hàng')
-                  <span class="badge bg-success">{{ $order->status }}</span>
-                @elseif($order->status == 'Đã xác nhận')
-                  <span class="badge bg-warning text-dark">{{ $order->status }}</span>
-                @else
-                  <span class="badge bg-secondary">{{ $order->status }}</span>
-                @endif
-                <span class="float-end fw-bold text-danger">{{ number_format($order->price, 0, ',', '.') }}đ</span>
-              </div>
-            @endforeach
-          </div>
-        </div>
-      </div>
-
-      <!-- Form thêm sản phẩm vào giỏ hàng -->
-      <div class="collapse mt-4" id="add-to-cart-form">
-        <div class="card-custom">
-          <h6 class="fw-bold mb-3 text-danger"><i class="bi bi-bag-plus"></i> Thêm sản phẩm vào giỏ hàng</h6>
-          <form action="{{ route('cart.addFromProfile') }}" method="POST">
-            @csrf
-            <div class="mb-3">
-              <label class="form-label">Tên sản phẩm</label>
-              <input type="text" class="form-control" name="name" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Giá</label>
-              <input type="number" class="form-control" name="price" required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Số lượng</label>
-              <input type="number" class="form-control" name="quantity" value="1" min="1" required>
-            </div>
-            <button type="submit" class="btn btn-success">Thêm vào giỏ hàng</button>
-          </form>
+  <!-- Top Header -->
+  <div class="top-header">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="brand-logo">SDEVICES</div>
+        <div class="header-nav">
+          <a href="#" class="active">Trang chủ</a>
+          <a href="#">Sản phẩm</a>
+          <a href="#">Tin tức</a>
+          <a href="#">Liên hệ</a>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Container -->
+  <div class="main-container">
+    <!-- Profile Banner -->
+    <div class="profile-banner">
+      <div class="profile-content">
+        <div class="avatar-section">
+          <img src="{{ asset('images/RecommendProduct/anhprofile.png') }}" alt="Avatar" class="avatar-large">
+          <div class="user-info">
+            <h1>Phạm Đình Nam</h1>
+            <span class="vip-badge">S-MEMBER</span>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-box">
+            <div class="stat-label">Tổng đơn hàng</div>
+            <div class="stat-number">{{ $totalOrders }}</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Tổng tích lũy</div>
+            <div class="stat-number">{{ number_format($totalPrice, 0, ',', '.') }}đ</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="nav-tabs-custom">
+      <div class="tab-item active">
+        <i class="bi bi-house-door-fill"></i>
+        <span>Tổng quan</span>
+      </div>
+      <div class="tab-item">
+        <i class="bi bi-tools"></i>
+        <span>Bảo hành</span>
+      </div>
+      <div class="tab-item">
+        <i class="bi bi-people-fill"></i>
+        <span>Giới thiệu</span>
+      </div>
+      <div class="tab-item">
+        <i class="bi bi-geo-alt-fill"></i>
+        <span>Cửa hàng</span>
+      </div>
+      <div class="tab-item" data-bs-toggle="collapse" data-bs-target="#add-to-cart-form">
+        <i class="bi bi-bag-plus-fill"></i>
+        <span>Thêm sản phẩm</span>
+      </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="content-grid">
+      <!-- Order Timeline -->
+      <div class="timeline-section">
+        <div class="timeline-title">
+          <i class="bi bi-clock-history"></i>
+          Lịch sử đơn hàng
+        </div>
+        @foreach($orders as $order)
+          <div class="timeline-item">
+            <div class="order-meta">
+              <span class="order-number">#{{ $order->order_code }}</span>
+              <span class="order-time">{{ $order->order_date }}</span>
+            </div>
+            <div class="order-desc">{{ $order->product_name }}</div>
+            <div class="order-bottom">
+              @if($order->status == 'Đã nhận hàng')
+                <span class="status-pill status-success">{{ $order->status }}</span>
+              @elseif($order->status == 'Đã xác nhận')
+                <span class="status-pill status-warning">{{ $order->status }}</span>
+              @else
+                <span class="status-pill status-info">{{ $order->status }}</span>
+              @endif
+              <span class="price-large">{{ number_format($order->price, 0, ',', '.') }}đ</span>
+            </div>
+          </div>
+        @endforeach
+      </div>
+
+      <!-- Sidebar -->
+      <div>
+        <div class="sidebar-widget">
+          <div class="widget-title">
+            <i class="bi bi-lightning-fill"></i>
+            Thao tác nhanh
+          </div>
+          <div class="action-list">
+            <a href="#" class="action-btn">
+              <i class="bi bi-star-fill"></i>
+              <span>Hạng thành viên</span>
+            </a>
+            <a href="#" class="action-btn">
+              <i class="bi bi-ticket-perforated-fill"></i>
+              <span>Mã giảm giá</span>
+            </a>
+            <a href="#" class="action-btn">
+              <i class="bi bi-bag-check-fill"></i>
+              <span>Lịch sử mua hàng</span>
+            </a>
+            <a href="#" class="action-btn">
+              <i class="bi bi-pin-map-fill"></i>
+              <span>Sổ địa chỉ</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Product Form -->
+    <div class="collapse" id="add-to-cart-form">
+      <div class="add-product-form">
+        <div class="timeline-title mb-4">
+          <i class="bi bi-bag-plus-fill"></i>
+          Thêm sản phẩm vào giỏ hàng
+        </div>
+        <form action="{{ route('cart.addFromProfile') }}" method="POST">
+          @csrf
+          <div class="form-group-modern">
+            <label>Tên sản phẩm</label>
+            <input type="text" class="form-input-modern" name="name" placeholder="Nhập tên sản phẩm..." required>
+          </div>
+          <div class="form-grid">
+            <div class="form-group-modern">
+              <label>Giá sản phẩm (VNĐ)</label>
+              <input type="number" class="form-input-modern" name="price" placeholder="Nhập giá..." required>
+            </div>
+            <div class="form-group-modern">
+              <label>Số lượng</label>
+              <input type="number" class="form-input-modern" name="quantity" value="1" min="1" required>
+            </div>
+          </div>
+          <button type="submit" class="btn-submit-modern">
+            <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

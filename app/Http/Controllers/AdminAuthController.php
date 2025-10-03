@@ -42,7 +42,7 @@ class AdminAuthController extends Controller
         if (Auth::attempt($credentials, $request->remember)) {
             // Kiểm tra xem user có phải admin không
             if (Auth::user()->isAdmin()) {
-                $request->session()->regenerate();
+                $request->session()->regenerate(); //đổi mã số session tránh hacker
                 return redirect()->route('admin.orders.index')->with('success', 'Đăng nhập admin thành công!');
             } else {
                 // Không phải admin thì đăng xuất
@@ -59,14 +59,12 @@ class AdminAuthController extends Controller
         ])->withInput($request->only('email'));
     }
 
-    /**
-     * Đăng xuất admin
-     */
+    //Đăng xuất admin
     public function logout(Request $request)
     {
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        $request->session()->invalidate(); //hủy session
+        $request->session()->regenerateToken(); // Sinh CSRF token mới
 
         return redirect()->route('admin.login');
     }

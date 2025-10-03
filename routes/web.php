@@ -17,7 +17,7 @@ Route::get('/homepage', [ProductController::class, 'homepage'])->name('homepage'
 Route::get('/dangnhap', [AuthController::class, 'showLoginForm'])->name('dangnhap');
 Route::post('/dangnhap', [AuthController::class, 'login'])->name('login.post');
 
-Route::get('/dangky', [AuthController::class, 'showRegisterForm'])->name('dangky');
+Route::get(uri: '/dangky', action: [AuthController::class, 'showRegisterForm'])->name(name: 'dangky');
 Route::post('/dangky', [AuthController::class, 'register'])->name('register.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

@@ -35,7 +35,8 @@
     <div class="row">
         <div class="col-md-6 mb-3">
             <label class="form-label">Họ và tên:</label>
-            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Nhập họ và tên" value="{{ old('name') }}" required>
+            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" 
+            placeholder="Nhập họ và tên" value="{{ old('name') }}" required>
             @error('name')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror

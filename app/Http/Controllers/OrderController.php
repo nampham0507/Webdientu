@@ -61,12 +61,12 @@ class OrderController extends Controller
         $existingCartItem = CartItems::where('CartID', $cart->CartID)
             ->where('ProductID', $product->ProductID)
             ->first();
-
+        //Nếu có thì +1
         if ($existingCartItem) {
             $existingCartItem->Quantity += 1;
             $existingCartItem->save();
         } else {
-            CartItems::create([
+            CartItems::create([ //chưa có thì tạo mới
                 'CartID'    => $cart->CartID,
                 'ProductID' => $product->ProductID,
                 'Quantity'  => 1
@@ -76,7 +76,7 @@ class OrderController extends Controller
         return redirect()->route('admin.orders.index')
             ->with('success', 'Thêm đơn hàng và sản phẩm vào giỏ hàng thành công');
     }
-
+    //SỬa đơn hàng
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -92,7 +92,7 @@ class OrderController extends Controller
         return redirect()->route('admin.orders.index')
             ->with('success', 'Cập nhật đơn hàng thành công');
     }
-
+    //Xóa đơn hàng
     public function destroy($id)
     {
         Order::destroy($id);
