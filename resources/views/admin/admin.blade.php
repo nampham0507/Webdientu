@@ -79,6 +79,13 @@
     object-fit: cover;
     border-radius: 8px;
   }
+  
+  .action-cell {
+    background-color: #f0f0f0;   
+    text-align: center;          
+    vertical-align: middle;      
+    padding: 10px;               
+}
 </style>
 @endpush
 
@@ -185,7 +192,7 @@
                   <span class="badge bg-secondary">Thường</span>
                 @endif
               </td>
-              <td class="d-flex gap-1">
+              <td class="action-cell">
                 <button class="btn btn-sm btn-primary" onclick="editProduct({{ $product }})">Sửa</button>
                 <form action="{{ route('admin.products.destroy', $product->ProductID) }}" method="POST">
                   @csrf

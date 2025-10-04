@@ -117,7 +117,7 @@ class AdminProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Xóa ảnh nếu có
+        // Xóa ảnh
         if ($product->ImageURL && file_exists(public_path($product->ImageURL))) {
             unlink(public_path($product->ImageURL));
         }

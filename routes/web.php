@@ -35,13 +35,6 @@ Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name(
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login.post');
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
-// Product demo
-Route::get('/product1', [ProductController::class, 'product1'])->name('product1');
-Route::get('/product2', [ProductController::class, 'product2'])->name('product2');
-Route::get('/product3', [ProductController::class, 'product3'])->name('product3');
-Route::get('/product4', [ProductController::class, 'product4'])->name('product4');
-Route::get('/product5', [ProductController::class, 'product5'])->name('product5');
-
 // Profile - Cần đăng nhập user
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProductController::class, 'profile'])->name('profile');
