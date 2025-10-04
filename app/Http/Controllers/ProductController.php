@@ -4,33 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
-    public function homepage()
+    public function show($id)
     {
-        return view('products.HomePage');
+        // Lấy sản phẩm theo ID
+        $product = Product::findOrFail($id);
+
+        return view('products.ProductDetail', compact('product'));
     }
 
-    public function product1()
+    public function homepage()
     {
-        return view('products.Product1');
-    }
-    public function product2()
-    {
-        return view('products.Product2');
-    }
-    public function product3()
-    {
-        return view('products.Product3');
-    }
-    public function product4()
-    {
-        return view('products.Product4');
-    }
-    public function product5()
-    {
-        return view('products.Product5');
+        // Lấy sản phẩm nổi bật (IsFeatured = 1)
+        $featuredProducts = Product::where('IsFeatured', true)
+            ->orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
+
+        // Nếu không có sản phẩm nổi bật, lấy sản phẩm mới nhất
+        if ($featuredProducts->isEmpty()) {
+            $featuredProducts = Product::orderBy('created_at', 'desc')
+                ->take(10)
+                ->get();
+        }
+
+        return view('products.HomePage', compact('featuredProducts'));
     }
 
     public function dangnhap()
@@ -66,10 +67,6 @@ class ProductController extends Controller
 
     public function profile()
     {
-        $orders = Order::latest()->get();
-        $totalOrders = $orders->count();
-        $totalPrice = $orders->sum('price');
-
-        return view('profile.Profile', compact('orders', 'totalOrders', 'totalPrice'));
+        return view('profile.Profile');
     }
 }

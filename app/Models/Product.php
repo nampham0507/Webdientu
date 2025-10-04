@@ -10,7 +10,7 @@ class Product extends Model
     use HasFactory;
 
     protected $table = 'products';
-    protected $primaryKey = 'ProductID';   // rất quan trọng
+    protected $primaryKey = 'ProductID';
     public $timestamps = true;
 
     protected $fillable = [
@@ -18,6 +18,18 @@ class Product extends Model
         'Price',
         'OriginalPrice',
         'Description',
-        'Image'
+        'Image',
+        'ImageURL',
+        'Category',
+        'Brand',
+        'Stock',
+        'Discount',
+        'IsFeatured'
+    ];
+
+    protected $casts = [
+        'IsFeatured' => 'boolean',
+        'Price' => 'decimal:2',
+        'OriginalPrice' => 'decimal:2'
     ];
 }
