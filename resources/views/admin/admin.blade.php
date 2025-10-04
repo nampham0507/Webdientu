@@ -85,7 +85,12 @@
     text-align: center;          
     vertical-align: middle;      
     padding: 10px;               
-}
+  }
+
+  .action-cell form {
+    display: inline-block;
+    margin: 0 2px;
+  }
 </style>
 @endpush
 
@@ -113,35 +118,50 @@
 
     <!-- Main content -->
     <div class="col-md-9 col-lg-10 p-4">
+      <!-- Hiển thị thông báo -->
+      @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      @endif
+
+      @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ session('error') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      @endif
+
       <!-- Thống kê tổng quan -->
       <div class="row mb-4">
         <div class="col-md-3">
           <div class="card-custom text-center">
             <h5>Tổng sản phẩm</h5>
-            <h3>{{ $totalProducts }}</h3>
+            <h3>{{ $totalProducts ?? 0 }}</h3>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card-custom text-center">
             <h5>Sản phẩm nổi bật</h5>
-            <h3>{{ $featuredProducts }}</h3>
+            <h3>{{ $featuredProducts ?? 0 }}</h3>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card-custom text-center">
             <h5>Tổng đơn hàng</h5>
-            <h3>{{ $totalOrders }}</h3>
+            <h3>{{ $totalOrders ?? 0 }}</h3>
           </div>
         </div>
         <div class="col-md-3">
           <div class="card-custom text-center">
             <h5>Tổng tiền tích lũy</h5>
-            <h3 class="text-danger">{{ number_format($totalPrice,0,',','.') }}đ</h3>
+            <h3 class="text-danger">{{ number_format($totalPrice ?? 0,0,',','.') }}đ</h3>
           </div>
         </div>
       </div>
 
-      <!-- Thêm sản phẩm mới -->
+      <!-- Quản lý sản phẩm -->
       <div class="card-custom mb-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h5 class="mb-0">Quản lý sản phẩm</h5>
@@ -151,105 +171,140 @@
         </div>
 
         <!-- Bảng sản phẩm -->
-        <table class="table table-bordered table-striped mt-3">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Ảnh</th>
-              <th>Tên sản phẩm</th>
-              <th>Giá</th>
-              <th>Giảm giá</th>
-              <th>Thương hiệu</th>
-              <th>Nổi bật</th>
-              <th>Thao tác</th>
-            </tr>
-          </thead>
-          <tbody>
-            @forelse($products as $product)
-            <tr>
-              <td>{{ $product->ProductID }}</td>
-              <td>
-                @if($product->ImageURL)
-                  <img src="{{ asset($product->ImageURL) }}" class="product-img-preview" alt="{{ $product->ProductName }}">
-                @else
-                  <span class="text-muted">Chưa có ảnh</span>
-                @endif
-              </td>
-              <td>{{ $product->ProductName }}</td>
-              <td>{{ number_format($product->Price,0,',','.') }}đ</td>
-              <td>
-                @if($product->Discount > 0)
-                  <span class="badge bg-danger">-{{ $product->Discount }}%</span>
-                @else
-                  <span class="text-muted">-</span>
-                @endif
-              </td>
-              <td>{{ $product->Brand ?? '-' }}</td>
-              <td>
-                @if($product->IsFeatured)
-                  <span class="badge bg-success">Nổi bật</span>
-                @else
-                  <span class="badge bg-secondary">Thường</span>
-                @endif
-              </td>
-              <td class="action-cell">
-                <button class="btn btn-sm btn-primary" onclick="editProduct({{ $product }})">Sửa</button>
-                <form action="{{ route('admin.products.destroy', $product->ProductID) }}" method="POST">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Xác nhận xóa?')">Xóa</button>
-                </form>
-              </td>
-            </tr>
-            @empty
-            <tr>
-              <td colspan="8" class="text-center">Chưa có sản phẩm nào</td>
-            </tr>
-            @endforelse
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped mt-3">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Giảm giá</th>
+                <th>Thương hiệu</th>
+                <th>Nổi bật</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              @forelse($products ?? [] as $product)
+              <tr>
+                <td>{{ $product->ProductID }}</td>
+                <td>
+                  @if($product->ImageURL)
+                    <img src="{{ asset($product->ImageURL) }}" class="product-img-preview" alt="{{ $product->ProductName }}">
+                  @else
+                    <span class="text-muted">Chưa có ảnh</span>
+                  @endif
+                </td>
+                <td>{{ $product->ProductName }}</td>
+                <td>{{ number_format($product->Price,0,',','.') }}đ</td>
+                <td>
+                  @if($product->Discount > 0)
+                    <span class="badge bg-danger">-{{ $product->Discount }}%</span>
+                  @else
+                    <span class="text-muted">-</span>
+                  @endif
+                </td>
+                <td>{{ $product->Brand ?? '-' }}</td>
+                <td>
+                  @if($product->IsFeatured)
+                    <span class="badge bg-success">Nổi bật</span>
+                  @else
+                    <span class="badge bg-secondary">Thường</span>
+                  @endif
+                </td>
+                <td class="action-cell">
+                  <button class="btn btn-sm btn-primary" onclick='editProduct(@json($product))'>
+                    <i class="bi bi-pencil"></i> Sửa
+                  </button>
+                  <form action="{{ route('admin.products.destroy', $product->ProductID) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Xác nhận xóa sản phẩm này?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash"></i> Xóa
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              @empty
+              <tr>
+                <td colspan="8" class="text-center">Chưa có sản phẩm nào</td>
+              </tr>
+              @endforelse
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      <!-- Đơn hàng -->
+      <!-- Quản lý đơn hàng -->
       <div class="card-custom">
-        <h5>Danh sách đơn hàng</h5>
-        <table class="table table-bordered table-striped mt-3">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Mã đơn</th>
-              <th>Sản phẩm</th>
-              <th>Giá</th>
-              <th>Trạng thái</th>
-              <th>Thao tác</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($orders as $order)
-            <tr>
-              <td>{{ $order->id }}</td>
-              <td>{{ $order->order_code }}</td>
-              <td>{{ $order->product_name }}</td>
-              <td>{{ number_format($order->price,0,',','.') }}đ</td>
-              <td>{{ $order->status }}</td>
-              <td class="d-flex gap-1">
-                <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
-                </form>
-              </td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Danh sách đơn hàng</h5>
+          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addOrderModal">
+            <i class="bi bi-plus-circle"></i> Thêm đơn hàng
+          </button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped mt-3">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Mã đơn</th>
+                <th>Sản phẩm</th>
+                <th>Giá</th>
+                <th>Trạng thái</th>
+                <th>Ngày đặt</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              @forelse($orders ?? [] as $order)
+              <tr>
+                <td>{{ $order->id }}</td>
+                <td>{{ $order->order_code }}</td>
+                <td>{{ $order->product_name }}</td>
+                <td>{{ number_format($order->price,0,',','.') }}đ</td>
+                <td>
+                  @if($order->status == 'Hoàn thành')
+                    <span class="badge bg-success">{{ $order->status }}</span>
+                  @elseif($order->status == 'Đã hủy')
+                    <span class="badge bg-danger">{{ $order->status }}</span>
+                  @elseif($order->status == 'Đang giao')
+                    <span class="badge bg-info">{{ $order->status }}</span>
+                  @else
+                    <span class="badge bg-warning">{{ $order->status }}</span>
+                  @endif
+                </td>
+                <td>{{ $order->order_date ? date('d/m/Y', strtotime($order->order_date)) : '-' }}</td>
+                <td class="action-cell">
+                  <button class="btn btn-sm btn-primary" onclick='editOrder(@json($order))'>
+                    <i class="bi bi-pencil"></i> Sửa
+                  </button>
+                  <form action="{{ route('admin.orders.destroy', $order->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Xác nhận xóa đơn hàng này?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">
+                      <i class="bi bi-trash"></i> Xóa
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              @empty
+              <tr>
+                <td colspan="7" class="text-center">Chưa có đơn hàng nào</td>
+              </tr>
+              @endforelse
+            </tbody>
+          </table>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- Modal thêm sản phẩm -->
+<!-- ==================== MODAL THÊM SẢN PHẨM ==================== -->
 <div class="modal fade" id="addProductModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -353,7 +408,7 @@
   </div>
 </div>
 
-<!-- Modal sửa sản phẩm -->
+<!-- ==================== MODAL SỬA SẢN PHẨM ==================== -->
 <div class="modal fade" id="editProductModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -453,10 +508,98 @@
   </div>
 </div>
 
+<!-- ==================== MODAL THÊM ĐƠN HÀNG ==================== -->
+<div class="modal fade" id="addOrderModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="{{ route('admin.orders.store') }}" method="POST">
+        @csrf
+        <div class="modal-header">
+          <h5 class="modal-title">Thêm đơn hàng mới</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Mã đơn hàng *</label>
+            <input type="text" name="order_code" class="form-control" required placeholder="ORD20250104001">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tên sản phẩm *</label>
+            <input type="text" name="product_name" class="form-control" required placeholder="iPhone 16 Pro Max">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giá (VNĐ) *</label>
+            <input type="number" name="price" class="form-control" required placeholder="29741000">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Trạng thái</label>
+            <select name="status" class="form-select">
+              <option value="Chờ xác nhận">Chờ xác nhận</option>
+              <option value="Đang xử lý">Đang xử lý</option>
+              <option value="Đang giao">Đang giao</option>
+              <option value="Hoàn thành">Hoàn thành</option>
+              <option value="Đã hủy">Đã hủy</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-success">Thêm đơn hàng</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== MODAL SỬA ĐƠN HÀNG ==================== -->
+<div class="modal fade" id="editOrderModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form id="editOrderForm" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa đơn hàng</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label">Mã đơn hàng *</label>
+            <input type="text" name="order_code" id="edit_order_code" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Tên sản phẩm *</label>
+            <input type="text" name="product_name" id="edit_product_name" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Giá (VNĐ) *</label>
+            <input type="number" name="price" id="edit_order_price" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Trạng thái</label>
+            <select name="status" id="edit_order_status" class="form-select">
+              <option value="Chờ xác nhận">Chờ xác nhận</option>
+              <option value="Đang xử lý">Đang xử lý</option>
+              <option value="Đang giao">Đang giao</option>
+              <option value="Hoàn thành">Hoàn thành</option>
+              <option value="Đã hủy">Đã hủy</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+          <button type="submit" class="btn btn-primary">Cập nhật</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @push('scripts')
 <script>
+// Hàm sửa sản phẩm
 function editProduct(product) {
     const form = document.getElementById('editProductForm');
     form.action = '/admin/products/' + product.ProductID;
@@ -473,6 +616,19 @@ function editProduct(product) {
     document.getElementById('edit_IsFeatured').checked = product.IsFeatured == 1;
     
     new bootstrap.Modal(document.getElementById('editProductModal')).show();
+}
+
+// Hàm sửa đơn hàng
+function editOrder(order) {
+    const form = document.getElementById('editOrderForm');
+    form.action = '/admin/orders/' + order.id;
+    
+    document.getElementById('edit_order_code').value = order.order_code || '';
+    document.getElementById('edit_product_name').value = order.product_name || '';
+    document.getElementById('edit_order_price').value = order.price || '';
+    document.getElementById('edit_order_status').value = order.status || 'Chờ xác nhận';
+    
+    new bootstrap.Modal(document.getElementById('editOrderModal')).show();
 }
 </script>
 @endpush

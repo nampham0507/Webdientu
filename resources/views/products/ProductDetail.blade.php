@@ -163,13 +163,12 @@
           </div>
 
           <!-- Ảnh sản phẩm -->
-          <div class="text-center ads-container p-3 border rounded shadow-sm" style="background-color: #f8f9fa;">
-            <img
-              src="{{ asset($product->ImageURL ?? 'images/default-product.webp') }}"
-              alt="{{ $product->ProductName }}"
-              style="max-width: 100%; max-height: 400px; width: auto; height: auto; object-fit: contain;"
-              class="img-fluid"
-            />
+          <div class="ratio ratio-1x1 bg-light border rounded overflow-hidden">
+          <img
+           src="{{ asset($product->ImageURL ?? 'images/default-product.webp') }}"
+           alt="{{ $product->ProductName }}"
+           class="w-100 h-100 object-fit-contain"
+          />
           </div>
 
           <!-- Thông số kỹ thuật -->

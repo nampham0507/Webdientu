@@ -21,7 +21,7 @@ class AdminProductController extends Controller
         $totalOrders = $orders->count();
         $totalPrice = $orders->sum('price');
 
-        // Truyền tất cả biến vào view
+        //Truyền đầy đủ tất cả biến vào view
         return view('admin.admin', compact(
             'products',
             'orders',

@@ -70,10 +70,6 @@
         <i class="bi bi-geo-alt-fill"></i>
         <span>Cửa hàng</span>
       </div>
-      <div class="tab-item" data-bs-toggle="collapse" data-bs-target="#add-to-cart-form">
-        <i class="bi bi-bag-plus-fill"></i>
-        <span>Thêm sản phẩm</span>
-      </div>
     </div>
 
     <!-- Content Grid -->

@@ -47,7 +47,6 @@
                             <div>
                                 <h6 class="fw-semibold text-dark mb-1">
                                     {{ $item->product->ProductName ?? 'Tên sản phẩm' }} <br>
-                                    {{ $item->product->Description ?? '' }}
                                 </h6>
                                 <span class="text-danger fw-bold me-2">
                                     {{ number_format($item->product->Price ?? 0, 0, ',', '.') }}đ

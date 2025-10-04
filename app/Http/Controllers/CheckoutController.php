@@ -1,5 +1,4 @@
 <?php
-// app/Http/Controllers/CheckoutController.php
 
 namespace App\Http\Controllers;
 
@@ -57,6 +56,7 @@ class CheckoutController extends Controller
         foreach ($cartItems as $item) {
             $checkoutItems[] = [
                 'id' => $item->CartItemID,
+                'product_id' => $item->ProductID,
                 'name' => $item->product->ProductName,
                 'price' => $item->product->Price,
                 'quantity' => $item->Quantity,
@@ -91,7 +91,7 @@ class CheckoutController extends Controller
 
             $userId = Auth::id();
 
-            // Lấy lại cart items để tính tổng tiền
+            // Lấy lại cart items để tạo đơn hàng
             $selectedItems = session('selected_cart_items', []);
 
             if (empty($selectedItems)) {
@@ -111,37 +111,50 @@ class CheckoutController extends Controller
                     });
             }
 
-            $totalAmount = 0;
-            $productNames = [];
+            // Tạo mã đơn hàng chung
+            $mainOrderCode = 'ORD' . date('YmdHis') . rand(100, 999);
+            $createdOrders = [];
 
+            // TẠO TỪNG ĐƠN HÀNG RIÊNG CHO TỪNG SẢN PHẨM
             foreach ($cartItems as $item) {
-                $totalAmount += $item->product->Price * $item->Quantity;
-                $productNames[] = $item->product->ProductName . ' (x' . $item->Quantity . ')';
+                $productPrice = $item->product->Price * $item->Quantity;
+
+                // Tạo mã đơn hàng con (thêm số thứ tự)
+                $orderCode = $mainOrderCode . '-' . $item->ProductID;
+
+                // Tạo đơn hàng
+                $order = Order::create([
+                    'order_code' => $orderCode,
+                    'product_name' => $item->product->ProductName . ' (x' . $item->Quantity . ')',
+                    'status' => $request->payment_method == 'cod' ? 'Chờ xác nhận' : 'Chờ thanh toán',
+                    'price' => $productPrice,
+                    'order_date' => now()->format('Y-m-d')
+                ]);
+
+                $createdOrders[] = [
+                    'order_code' => $orderCode,
+                    'product_name' => $item->product->ProductName,
+                    'quantity' => $item->Quantity,
+                    'price' => $productPrice
+                ];
             }
 
-            // Tạo mã đơn hàng
-            $orderCode = 'ORD' . date('YmdHis') . rand(100, 999);
-
-            // Tạo đơn hàng
-            $order = Order::create([
-                'order_code' => $orderCode,
-                'product_name' => implode(', ', $productNames),
-                'status' => $request->payment_method == 'cod' ? 'Chờ xác nhận' : 'Chờ thanh toán',
-                'price' => $totalAmount,
-                'order_date' => now()->format('Y-m-d')
-            ]);
+            // Tính tổng tiền
+            $totalAmount = $cartItems->sum(function ($item) {
+                return $item->product->Price * $item->Quantity;
+            });
 
             // Lưu thông tin khách hàng vào session để hiển thị ở trang success
             session([
                 'order_info' => [
-                    'order_code' => $orderCode,
+                    'main_order_code' => $mainOrderCode,
                     'customer_name' => $request->name,
                     'customer_phone' => $request->phone,
                     'customer_email' => $request->email,
                     'delivery_method' => $request->delivery_method,
                     'payment_method' => $request->payment_method,
                     'total_amount' => $totalAmount,
-                    'products' => $productNames
+                    'orders' => $createdOrders
                 ]
             ]);
 
@@ -178,7 +191,6 @@ class CheckoutController extends Controller
 
         return view('checkout.checkoutsuccess', compact('orderInfo'));
     }
-
 
     public function prepare(Request $request)
     {

@@ -33,7 +33,7 @@ header {
 
 .carousel-item img {
     object-fit: contain;
-    max-width: 100%; /* Ảnh không vượt quá khung */
+    max-width: 100%;
     max-height: 100%;
 }
 
@@ -91,8 +91,12 @@ header {
 
 .carousel-item img {
     width: 100%;
-    height: 340px; /* ép chiều cao */
-    object-fit: contain; /* hoặc cover */
+    height: 340px;
+    object-fit: contain;
+}
+
+.object-fit-contain {
+    object-fit: contain;
 }
 /* ==== FOOTER ==== */
 .footer {
@@ -119,7 +123,7 @@ header {
 .footer-column h3 {
     margin-bottom: 15px;
     font-size: 18px;
-    color: #f0ad4e; /* vàng nổi bật */
+    color: #f0ad4e;
 }
 
 .footer-column ul {
@@ -157,5 +161,5 @@ header {
 }
 
 .navbar .container-fluid {
-    gap: 10px; /* khoảng cách giữa logo và menu */
+    gap: 10px;
 }
