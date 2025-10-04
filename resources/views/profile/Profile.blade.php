@@ -1,4 +1,4 @@
-@extends('layouts/profile')
+@extends('layouts.profile')
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -42,7 +42,7 @@
         <div class="stats-row">
           <div class="stat-box">
             <div class="stat-label">Tổng đơn hàng</div>
-            <div class="stat-number">{{ $totalOrders }}</div>
+            <div class="stat-number">{{ $totalProducts }}</div>
           </div>
           <div class="stat-box">
             <div class="stat-label">Tổng tích lũy</div>
@@ -84,7 +84,7 @@
           <i class="bi bi-clock-history"></i>
           Lịch sử đơn hàng
         </div>
-        @foreach($orders as $order)
+        @forelse(($orders ?? []) as $order)
           <div class="timeline-item">
             <div class="order-meta">
               <span class="order-number">#{{ $order->order_code }}</span>
@@ -102,7 +102,9 @@
               <span class="price-large">{{ number_format($order->price, 0, ',', '.') }}đ</span>
             </div>
           </div>
-        @endforeach
+        @empty
+        <p class="text-muted">Chưa có đơn hàng nào.</p>
+      @endforelse
       </div>
 
       <!-- Sidebar -->
@@ -133,37 +135,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Add Product Form -->
-    <div class="collapse" id="add-to-cart-form">
-      <div class="add-product-form">
-        <div class="timeline-title mb-4">
-          <i class="bi bi-bag-plus-fill"></i>
-          Thêm sản phẩm vào giỏ hàng
-        </div>
-        <form action="{{ route('cart.addFromProfile') }}" method="POST">
-          @csrf
-          <div class="form-group-modern">
-            <label>Tên sản phẩm</label>
-            <input type="text" class="form-input-modern" name="name" placeholder="Nhập tên sản phẩm..." required>
-          </div>
-          <div class="form-grid">
-            <div class="form-group-modern">
-              <label>Giá sản phẩm (VNĐ)</label>
-              <input type="number" class="form-input-modern" name="price" placeholder="Nhập giá..." required>
-            </div>
-            <div class="form-group-modern">
-              <label>Số lượng</label>
-              <input type="number" class="form-input-modern" name="quantity" value="1" min="1" required>
-            </div>
-          </div>
-          <button type="submit" class="btn-submit-modern">
-            <i class="bi bi-cart-plus me-2"></i>Thêm vào giỏ hàng
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>

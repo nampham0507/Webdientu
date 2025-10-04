@@ -43,7 +43,7 @@ class AdminAuthController extends Controller
             // Kiểm tra xem user có phải admin không
             if (Auth::user()->isAdmin()) {
                 $request->session()->regenerate(); //đổi mã số session tránh hacker
-                return redirect()->route('admin.orders.index')->with('success', 'Đăng nhập admin thành công!');
+                return redirect()->route('admin.products.index')->with('success', 'Đăng nhập admin thành công!');
             } else {
                 // Không phải admin thì đăng xuất
                 Auth::logout();

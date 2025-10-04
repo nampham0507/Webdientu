@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -67,6 +68,16 @@ class ProductController extends Controller
 
     public function profile()
     {
-        return view('profile.Profile');
+        if (!Auth::check()) {
+            return redirect()->route('dangnhap')->with('error', 'Bạn cần đăng nhập để xem trang cá nhân');
+        }
+        $userId = Auth::id();
+
+        $orders = Order::orderBy('created_at', 'desc')->get();
+
+        $totalProducts = $orders->count();
+        $totalPrice = $orders->sum('price');
+
+        return view('profile.Profile', compact('orders', 'totalProducts', 'totalPrice'));
     }
 }
