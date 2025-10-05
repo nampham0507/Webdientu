@@ -49,6 +49,10 @@
                     <label class="form-label">Email</label>
                     <input type="email" class="form-control" name="email" placeholder="Nhập email" />
                 </div>
+                <div class="col-md-4 mb-2">
+                    <label class="form-label">Địa chỉ</label>
+                    <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ" />
+                </div>
             </div>
 
             <h6 class="fw-bold">Thông tin nhận hàng</h6>

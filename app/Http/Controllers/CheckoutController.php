@@ -151,6 +151,7 @@ class CheckoutController extends Controller
                     'customer_name' => $request->name,
                     'customer_phone' => $request->phone,
                     'customer_email' => $request->email,
+                    'customer_address' => $request->address,
                     'delivery_method' => $request->delivery_method,
                     'payment_method' => $request->payment_method,
                     'total_amount' => $totalAmount,

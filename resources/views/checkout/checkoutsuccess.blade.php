@@ -34,6 +34,11 @@
                             <div class="col-7">{{ $orderInfo['customer_phone'] }}</div>
                         </div>
 
+                        <div class="row mb-2">
+                            <div class="col-5"><strong>Địa chỉ:</strong></div>
+                            <div class="col-7">{{ $orderInfo['customer_address'] }}</div>
+                        </div>
+
                         @if($orderInfo['customer_email'])
                         <div class="row mb-2">
                             <div class="col-5"><strong>Email:</strong></div>
