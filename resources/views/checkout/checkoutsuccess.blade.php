@@ -98,11 +98,6 @@
                                 </tfoot>
                             </table>
                         </div>
-
-                        <div class="alert alert-info mt-3">
-                            <i class="bi bi-info-circle"></i> 
-                            Chúng tôi đã tạo <strong>{{ count($orderInfo['orders']) }} đơn hàng riêng</strong> cho từng sản phẩm để dễ dàng quản lý và giao hàng.
-                        </div>
                     </div>
 
                     <div class="mt-4">

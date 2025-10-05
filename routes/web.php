@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/cart/add-product', [CartController::class, 'addProduct'])->name('cart.addProduct');
     Route::post('/cart/update-quantity/{id}', [CartController::class, 'updateQuantity'])->name('cart.updateQuantity');
     Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
-    Route::post('/cart/add-from-profile', [CartController::class, 'addFromProfile'])->name('cart.addFromProfile');
 
     // Checkout - Cần đăng nhập user
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');

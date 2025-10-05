@@ -12,6 +12,15 @@
     .quantity-input[type=number] {
         -moz-appearance: textfield;
     }
+    .product-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+.me-3 {
+    margin-right: 1rem !important;
+}
 </style>
 @endpush
 
@@ -40,7 +49,22 @@
                                data-price="{{ $item->product ? $item->product->Price : 0 }}" 
                                data-original="{{ $item->product ? ($item->product->OriginalPrice ?? $item->product->Price) : 0 }}"/>
                     </div>
-
+        <!-- Ảnh sản phẩm -->
+                    @if($item->product)
+                        @if($item->product->ImageURL)
+                            <img src="{{ asset($item->product->ImageURL) }}" 
+                                 alt="{{ $item->product->ProductName }}" 
+                                 class="product-image me-3">
+                        @else
+                            <div class="product-image me-3 bg-light d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-image fa-2x text-muted"></i>
+                            </div>
+                        @endif
+                    @else
+                        <div class="product-image me-3 bg-light d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-image fa-2x text-muted"></i>
+                        </div>
+                    @endif
                     <!-- Thông tin sản phẩm -->
                     <div class="flex-grow-1 ms-0">
                         <div class="d-flex justify-content-between align-items-start">
