@@ -593,7 +593,7 @@
         </div>
       </div>
 
-      <!-- Phần Sản phẩm nổi bật - Thay thế phần cũ -->
+      <!-- Phần Sản phẩm nổi bật -->
 <div class="products-section mt-3">
   <!-- Tiêu đề -->
   <div class="d-flex flex-column flex-md-row">

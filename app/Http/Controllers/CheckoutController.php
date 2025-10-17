@@ -86,8 +86,8 @@ class CheckoutController extends Controller
             'payment_method' => 'required|in:cod,bank,card,momo'
         ]);
 
+        DB::beginTransaction();
         try {
-            DB::beginTransaction();
 
             $userId = Auth::id();
 
