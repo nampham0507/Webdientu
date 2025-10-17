@@ -22,13 +22,13 @@ class ProductController extends Controller
         // Lấy sản phẩm nổi bật (IsFeatured = 1)
         $featuredProducts = Product::where('IsFeatured', true)
             ->orderBy('created_at', 'desc')
-            ->take(10)
+            ->take(20)
             ->get();
 
         // Nếu không có sản phẩm nổi bật, lấy sản phẩm mới nhất
         if ($featuredProducts->isEmpty()) {
             $featuredProducts = Product::orderBy('created_at', 'desc')
-                ->take(10)
+                ->take(20)
                 ->get();
         }
 
